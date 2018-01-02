@@ -7,7 +7,7 @@ import org.junit.Test;
 public class DemoTest {
     @Test
     public void checkForPass(){
-        Assert.assertEquals("Test for jenkins", "Test for jenkins");
+        Assert.assertEquals("Test for jenkins", "Test for jenkins1");
     }
 
     @Test
