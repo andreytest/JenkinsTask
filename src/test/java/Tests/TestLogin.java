@@ -45,10 +45,11 @@ public class TestLogin {
 
     @Test
     public void validLogin() {
-        MainPage mainPage = new MainPage();
-        LoginForm loginForm = mainPage.openLoginForm();
-        loginForm.logining("andreytest1@i.ua", "difficultpassword");
-        mainPage.userInfo().shouldHave(text("andreytest1"));
+         MainPage mainPage = new MainPage();
+        mainPage.openLoginForm()
+                .logining("andreytest1@i.ua", "difficultpassword")
+                .userInfo()
+                .shouldHave(text("andreytest1"));
         mainPage.logout();
     }
 
