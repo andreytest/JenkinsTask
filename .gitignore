@@ -1,0 +1,16 @@
+.idea/
+.rup/
+dummy.txt
+*.iml
+*.ipr
+*.log
+*.iws
+out/
+bin/
+build/
+.settings/
+.project
+.classpath
+.gradle/
+catalina.base_IS_UNDEFINED
+target/
