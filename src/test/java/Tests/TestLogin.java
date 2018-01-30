@@ -1,27 +1,17 @@
 package Tests;
 
-
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import com.epam.Andrii_Yavtushenko.Page.LoginForm;
 import com.epam.Andrii_Yavtushenko.Page.MainPage;
-import com.epam.Andrii_Yavtushenko.Page.ProductPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.*;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static org.assertj.core.api.Assertions.assertThat;
-
 
 public class TestLogin {
 
@@ -44,14 +34,41 @@ public class TestLogin {
     }
 
     @Test
+    public void validLogin() {
+        MainPage mainPage = new MainPage();
+        mainPage.openLoginForm()
+                .logining("andreytest1@i.ua", "difficultpassword")
+                .userInfo()
+                .shouldHave(text("andreytest1"));
+        mainPage.logout();
+    }
+
+    @Test
     public void loginWithGoogle() {
         MainPage mainPage = new MainPage();
         LoginForm loginForm = mainPage.openLoginForm();
-        loginForm.loginWithSocial();
+        loginForm.loginWithGoogle();
         switchTo().window(1);
         Assert.assertTrue(url().contains("google"));
         close();
     }
 
+    @Test
+    public void loginWithFacebook() {
+        MainPage mainPage = new MainPage();
+        LoginForm loginForm = mainPage.openLoginForm();
+        loginForm.loginWithFacebook();
+        switchTo().window(1);
+        Assert.assertTrue(url().contains("facebook"));
+        close();
+    }
+
+    @Test
+    public void changeCity() {
+        MainPage mainPage = new MainPage();
+        mainPage.changeCity()
+                .changeCityButton()
+                .shouldHave(text("Днепр"));
+    }
 
 }

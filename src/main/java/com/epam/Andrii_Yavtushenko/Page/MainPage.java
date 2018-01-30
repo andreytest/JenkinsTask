@@ -8,13 +8,8 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
 
-//    public SearchResultsPage searchFor(String text) {
-//        $(By.className("search-text-input")).setValue(text).pressEnter();
-//        return page(SearchResultsPage.class);
-//    }
-
     public SelenideElement userInfo() {
-        return $x("//*[@class='user-info']/a/span");
+        return $x("//*[@class='user-info']");
     }
 
     private SelenideElement loginButton() {
@@ -45,16 +40,11 @@ public class MainPage {
         logoutButton().click();
     }
 
-    public void changeCity() {
+    public MainPage changeCity() {
         changeCityButton().click();
         citiesForChoose().get(1).shouldHave().click();
+        return page(MainPage.class);
     }
-
-    public ProductPage goToSubCategoru(String nameOfCategory, int numberOfSubCategoryLink) {
-        listOfSubCategory(nameOfCategory).get(numberOfSubCategoryLink).click();
-        return page(ProductPage.class);
-    }
-
 
     private ElementsCollection categoryItem() {
         return $$x("//*[@class='page-cloud-row clearfix']/div");
@@ -86,9 +76,9 @@ public class MainPage {
         return selenideElement;
     }
 
-    public ProductPage goToSubCategory(String nameOfCategory, String nameOfSubCategory) {
+    public ProductsPage goToSubCategory(String nameOfCategory, String nameOfSubCategory) {
         getSubCategoryByName(nameOfCategory, nameOfSubCategory).click();
-        return page(ProductPage.class);
+        return page(ProductsPage.class);
     }
 
 

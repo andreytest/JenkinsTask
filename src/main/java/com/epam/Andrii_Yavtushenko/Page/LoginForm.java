@@ -1,6 +1,5 @@
 package com.epam.Andrii_Yavtushenko.Page;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -27,19 +26,22 @@ public class LoginForm {
         return $x("//*[@href='/my/o/google/']");
     }
 
-    private ElementsCollection loginBySocial() {
-        return $$x("//*[contains(@class,'form-btn form-btn')]");
-    }
     public SelenideElement loginErrorMassage() {
-
         return $x("//*[@id='login-form']/div[2]/div");
     }
-    public void loginWithSocial(){
+
+    public void loginWithGoogle() {
         loginByGoogle().click();
     }
-    public void logining(String loginEMail, String logingPassword) {
+
+    public void loginWithFacebook() {
+        loginByFacebook().click();
+    }
+
+    public MainPage logining(String loginEMail, String logingPassword) {
         loginField().setValue(loginEMail);
         passwordField().setValue(logingPassword);
         loginButton().click();
+        return page(MainPage.class);
     }
 }
