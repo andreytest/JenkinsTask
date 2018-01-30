@@ -14,7 +14,7 @@ public class MainPage {
 //    }
 
     public SelenideElement userInfo() {
-        return $x("//*[@class='user-info']");
+        return $x("//*[@class='user-info']/a/span");
     }
 
     private SelenideElement loginButton() {
