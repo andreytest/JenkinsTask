@@ -1,7 +1,6 @@
 .idea/
 .rup/
 dummy.txt
-*.iml
 *.ipr
 *.log
 *.iws
